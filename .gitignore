@@ -1,0 +1,10 @@
+/build*
+/.vscode
+/cpm_modules
+/dep-cache
+.DS_Store
+.ssh/*.pem
+logs/*.log
+Testing
+/.idea
+/cmake-build-*
