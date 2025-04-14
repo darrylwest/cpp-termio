@@ -1,9 +1,9 @@
-# Terminal Color Formatter
+# Terminal Library
 
 ```
 ```
 
-A library to support terminal colors.
+A library to support terminal colors, attiributes, cusor positions, etc.
 
 
 ## CMake Example
