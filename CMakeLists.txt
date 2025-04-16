@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.30) # Or higher
 
 # Project name
-project(ColorFormatterLibrary)
+project(termio)
 
 # Enable C++11 or higher
 set(CMAKE_CXX_STANDARD 23)
@@ -23,30 +23,28 @@ endif()
 include_directories(include)
 
 # Source files
-set(COLOR_SRC
-    src/colors.cpp
+set(SRC
+    src/termio.cpp
 )
 
 # Create the library
-add_library(color_formatter ${COLOR_SRC})
+add_library(termio ${SRC})
 
 # Define a target for the library's header files (Modern CMake)
 #  -  This creates an interface library, which doesn't produce any build output
-add_library(color_formatter_headers INTERFACE)
+add_library(termio INTERFACE)
 
 #  -  Specify the include directories for the header files
-target_include_directories(color_formatter_headers
+target_include_directories(termio
     INTERFACE
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/term
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/termio
 )
 
 #  -  Link the interface library to the color_formatter library
-target_link_libraries(color_formatter
+target_link_libraries(termio
     PUBLIC
-    color_formatter_headers
+    termio
 )
 
-# Add a subdirectory for tests
-add_subdirectory(tests)
 
 
