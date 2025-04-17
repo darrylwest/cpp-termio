@@ -82,14 +82,14 @@ namespace termio::termio {
     auto italic() -> const std::string { return to_string(Attr::italic); }
     auto underline() -> const std::string { return to_string(Attr::underline); }
 
-    auto black() -> const std::string { return to_string(Color::black); }
-    auto red() -> const std::string { return to_string(Color::red); }
-    auto green() -> const std::string { return to_string(Color::green); }
-    auto yellow() -> const std::string { return to_string(Color::yellow); }
-    auto blue() -> const std::string { return to_string(Color::blue); }
-    auto magenta() -> const std::string { return to_string(Color::magenta); }
-    auto cyan() -> const std::string { return to_string(Color::cyan); }
-    auto white() -> const std::string { return to_string(Color::white); }
+    auto black(bool bright) -> const std::string { return to_string(Color::black, bright); }
+    auto red(bool bright) -> const std::string { return to_string(Color::red, bright); }
+    auto green(bool bright) -> const std::string { return to_string(Color::green, bright); }
+    auto yellow(bool bright) -> const std::string { return to_string(Color::yellow, bright); }
+    auto blue(bool bright) -> const std::string { return to_string(Color::blue, bright); }
+    auto magenta(bool bright) -> const std::string { return to_string(Color::magenta, bright); }
+    auto cyan(bool bright) -> const std::string { return to_string(Color::cyan, bright); }
+    auto white(bool bright) -> const std::string { return to_string(Color::white, bright); }
     auto reset() -> const std::string { return to_string(Color::reset); }
     auto reset_nl() -> const std::string { return to_string(Color::reset) + "\n"; }
 

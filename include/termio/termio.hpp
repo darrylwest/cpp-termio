@@ -11,6 +11,7 @@
 #include <vector>
 
 namespace termio::termio {
+    constexpr bool BRIGHT = true;
 
     // Enum for basic colors
     enum class Color {
@@ -58,14 +59,14 @@ namespace termio::termio {
     auto italic() -> const std::string;
     auto underline() -> const std::string;
 
-    auto black() -> const std::string;
-    auto red() -> const std::string;
-    auto green() -> const std::string;
-    auto yellow() -> const std::string;
-    auto blue() -> const std::string;
-    auto magenta() -> const std::string;
-    auto cyan() -> const std::string;
-    auto white() -> const std::string;
+    auto black(bool bright = false) -> const std::string;
+    auto red(bool bright = false) -> const std::string;
+    auto green(bool bright = false) -> const std::string;
+    auto yellow(bool bright = false) -> const std::string;
+    auto blue(bool bright = false) -> const std::string;
+    auto magenta(bool bright = false) -> const std::string;
+    auto cyan(bool bright = false) -> const std::string;
+    auto white(bool bright = false) -> const std::string;
     auto reset() -> const std::string;
     auto reset_nl() -> const std::string;
 
