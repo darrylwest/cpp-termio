@@ -4,13 +4,11 @@
 
 #pragma once
 
-#include <iomanip>
 #include <iostream>
-#include <sstream>
 #include <string>
-#include <vector>
 
 namespace termio::termio {
+    constexpr auto VERSION = "0.5.1";
     constexpr bool BRIGHT = true;
 
     // Enum for basic colors

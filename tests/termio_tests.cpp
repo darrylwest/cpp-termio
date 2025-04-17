@@ -5,7 +5,6 @@
 #include <catch2/catch_all.hpp>
 #include <string>
 #include <termio/termio.hpp>
-#include <vector>
 
 TEST_CASE("Termio tests", "[wrap]") {
     using namespace termio::termio;
