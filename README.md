@@ -8,15 +8,19 @@
         |__|  |__|                                                              
 ```
 
-A library to support terminal colors, attiributes, cursor positions, screen sizes, etc.
+A library to support terminal colors, attributes, cursor positions, screen sizes, etc.
 
 
 ## CMake Example
 
+find_package(termio REQUIRED)
+
 ## Examples
+
+_See [examples](examples) directory._
 
 ## Color Breakdown
 
 _see [this](https://gemini.google.com/share/6b4aa67b2cb4)._
 
-###### 2025.04.16 | dpw
+###### 2025.04.17 | dpw
