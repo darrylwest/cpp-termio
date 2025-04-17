@@ -22,17 +22,14 @@ do
         build)
             clear
 
-            # remove any old unit test
-            /bin/rm -f build/unit
-
             # cmake --build build/ 
             (cd build && time make -j4 || exit 1)
 
             shift
         ;;
-        unit)
+        unit|test)
             (cd build && make -j4 && ctest --output-on-failure)
-            ./build/unit
+            ./build/termio_tests
 
             shift
         ;;
