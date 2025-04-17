@@ -16,7 +16,6 @@ TEST_CASE("Termio tests", "[wrap]") {
     REQUIRE(text.starts_with(to_string(Attr::bold)));
     REQUIRE(text.contains(to_string(Color::blue)));
     REQUIRE(text.ends_with(to_string(Color::reset)));
-
 }
 
 TEST_CASE("Termio tests", "[wrap][default-attr]") {
@@ -24,12 +23,10 @@ TEST_CASE("Termio tests", "[wrap][default-attr]") {
 
     const auto text = wrap("This is yellow text.", Color::yellow);
 
-
     REQUIRE(text.contains("This is yellow text."));
     REQUIRE(text.starts_with(to_string(Attr::normal)));
     REQUIRE(text.contains(to_string(Color::yellow)));
     REQUIRE(text.ends_with(to_string(Color::reset)));
-
 }
 
 TEST_CASE("Termio tests", "[attrs][bold]") {
@@ -52,7 +49,6 @@ TEST_CASE("Termio tests", "[colors][bright]") {
     const auto blue = to_string(Color::blue);
 
     REQUIRE(true);
-
 }
 
 TEST_CASE("Termio tests", "[colors][all-normal]") {

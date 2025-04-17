@@ -4,12 +4,47 @@ project(termio VERSION 1.0 LANGUAGES CXX)
 # Set C++ standard to C++23
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+# Useful for IDE integration and static analysis tools
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Check for C++23 support
+include(CheckCXXCompilerFlag)
+CHECK_CXX_COMPILER_FLAG("-std=c++23" COMPILER_SUPPORTS_CXX23)
+if(NOT COMPILER_SUPPORTS_CXX23)
+    message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++23 support.")
+endif()
+
+# Define source and include directories
+set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
+set(INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
+set(BIN_DIR "${CMAKE_CURRENT_BINARY_DIR}")
 
 # Modern way to handle include directories
 add_library(termio STATIC src/termio.cpp)
 target_include_directories(termio PUBLIC 
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 )
+
+# MacOS universal binary setup
+if(APPLE)
+    execute_process(
+            COMMAND uname -m
+            OUTPUT_VARIABLE HOST_ARCHITECTURE
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+
+    if(HOST_ARCHITECTURE STREQUAL "arm64")
+        set(CMAKE_OSX_ARCHITECTURES "arm64")
+    else()
+        set(CMAKE_OSX_ARCHITECTURES "x86_64")
+    endif()
+    message(STATUS "osx arch: ${CMAKE_OSX_ARCHITECTURES}")
+elseif(UNIX AND NOT APPLE)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++")
+    message(STATUS "linux")
+endif()
 
 find_package(Catch2 3 REQUIRED)
 
