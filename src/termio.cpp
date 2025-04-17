@@ -79,7 +79,9 @@ namespace termio::termio {
     auto bold() -> const std::string { return to_string(Attr::bold); }
     auto italic() -> const std::string { return to_string(Attr::italic); }
     auto underline() -> const std::string { return to_string(Attr::underline); }
-    auto blink() -> const std::string { return to_string(Attr::blink); }
+    // auto blink() -> const std::string { return to_string(Attr::rapid_blink); }
+    auto reverse() -> const std::string { return to_string(Attr::reverse); }
+    auto strikethrough() -> const std::string { return to_string(Attr::strikethrough); }
 
     auto black(bool bright) -> const std::string { return to_string(Color::black, bright); }
     auto red(bool bright) -> const std::string { return to_string(Color::red, bright); }

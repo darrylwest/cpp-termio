@@ -17,6 +17,8 @@ int main() {
     std::println("{}{}{}", yellow(), "Hello banana!", reset());
     std::println("{}{}{}", yellow(true), "Hello bright banana!", reset());
     std::println("{}{}{}{}", magenta(true), italic(), "Hello italic magenta!", reset());
+    std::println("This will {}{}{}{} cyan.", cyan(true), reverse(), "reverse!", reset());
+    std::println("This will {}{}{}{} cyan.", cyan(true), strikethrough(), "strike!", reset());
 
     // using wrap to set colors
     std::puts("\nWrapped text -------------------------");

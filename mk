@@ -39,8 +39,8 @@ do
 
             shift
         ;;
-        single)
-            python scripts/merge_to_header_only.py
+        examples)
+            ./build/simple-colors
 
             shift
         ;;
@@ -55,7 +55,7 @@ do
             shift
         ;;
         watch)
-            watchexec -c -w src/ -w include/ -e h,hpp,cpp ./mk clobber init build unit
+            watchexec -c -w src/ -w include/ -w examples/ -e h,hpp,cpp ./mk clobber init build unit examples
 
             exit 0
         ;;
