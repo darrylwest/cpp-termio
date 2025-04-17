@@ -8,7 +8,7 @@
 #include <string>
 
 namespace termio::termio {
-    constexpr auto VERSION = "0.5.1";
+    constexpr auto VERSION = "0.5.2";
     constexpr bool BRIGHT = true;
 
     // Enum for basic colors
