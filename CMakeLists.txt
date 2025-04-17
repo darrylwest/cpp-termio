@@ -1,50 +1,26 @@
-# CMakeLists.txt
-cmake_minimum_required(VERSION 3.30) # Or higher
+cmake_minimum_required(VERSION 3.30)  # Minimum version for CMake
+project(termio VERSION 1.0 LANGUAGES CXX)
 
-# Project name
-project(termio)
-
-# Enable C++11 or higher
+# Set C++ standard to C++23
 set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Useful for IDE integration and static analysis tools
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+# Specify the include directory
+include_directories(include/termio)
 
-# Check for C++23 support
-include(CheckCXXCompilerFlag)
-CHECK_CXX_COMPILER_FLAG("-std=c++23" COMPILER_SUPPORTS_CXX23)
-if(NOT COMPILER_SUPPORTS_CXX23)
-    message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++23 support.")
-endif()
+# Create a static library from the source file
+add_library(termio STATIC src/termio.cpp)
 
-# Include directories for headers
-include_directories(include)
-
-# Source files
-set(SRC
-    src/termio.cpp
-)
-
-# Create the library
-add_library(termio ${SRC})
-
-# Define a target for the library's header files (Modern CMake)
-#  -  This creates an interface library, which doesn't produce any build output
-add_library(termio INTERFACE)
-
-#  -  Specify the include directories for the header files
-target_include_directories(termio
-    INTERFACE
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/termio
-)
-
-#  -  Link the interface library to the color_formatter library
-target_link_libraries(termio
-    PUBLIC
-    termio
-)
+find_package(Catch2 3 REQUIRED)
 
 
+# Specify the target for the tests
+add_executable(termio_tests tests/termio_tests.cpp)
+
+# Link the static library and Catch2 to the test executable
+target_link_libraries(termio_tests PRIVATE termio Catch2::Catch2WithMain)
+
+# Optionally, you can add a test command if you have CTest available
+enable_testing()
+add_test(NAME unit_tests COMMAND termio_tests)
 

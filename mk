@@ -37,7 +37,7 @@ do
             shift
         ;;
         format)
-            clang-format -i include/datetimelib/*.hpp src/*.cpp
+            clang-format -i include/termio/*.hpp src/*.cpp tests/*.cpp
             git status -s
 
             shift

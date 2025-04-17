@@ -52,21 +52,21 @@ namespace termio::termio {
     // Attr Overload << for easier use
     std::ostream& operator<<(std::ostream& os, Attr a);
 
-    const std::string wrap(const std::string& s, const Color& c, const Attr& a = Attr::normal);
-    const std::string normal();
-    const std::string bold();
-    const std::string italic();
-    const std::string underline();
+    auto wrap(const std::string& s, const Color& c, const Attr& a = Attr::normal) -> const std::string;
+    auto normal() -> const std::string;
+    auto bold() -> const std::string;
+    auto italic() -> const std::string;
+    auto underline() -> const std::string;
 
-    const std::string black();
-    const std::string red();
-    const std::string green();
-    const std::string yellow();
-    const std::string blue();
-    const std::string magenta();
-    const std::string cyan();
-    const std::string white();
-    const std::string reset();
-    const std::string reset_nl();
+    auto black() -> const std::string;
+    auto red() -> const std::string;
+    auto green() -> const std::string;
+    auto yellow() -> const std::string;
+    auto blue() -> const std::string;
+    auto magenta() -> const std::string;
+    auto cyan() -> const std::string;
+    auto white() -> const std::string;
+    auto reset() -> const std::string;
+    auto reset_nl() -> const std::string;
 
 }  // namespace termio::termio

@@ -35,7 +35,7 @@ namespace termio::termio {
         }
     }
 
-    std::string to_string(Attr a) {
+    auto to_string(Attr a) -> std::string {
         switch (a) {
             case Attr::normal:
                 return "\033[0m";
@@ -57,18 +57,18 @@ namespace termio::termio {
                 return "\033[8m";
             case Attr::strikethrough:
                 return "\033[9m";
-            // case Attr::bright:
-            // return ";1";  // Used in conjunction with color.
-            default:
-                return "\033[0m";
+                // case Attr::bright:
+                // return ";1";  // Used in conjunction with color.
         }
+
+        return "\033[0m";
     }
 
     // Color Overload << for easier use
-    std::ostream& operator<<(std::ostream& os, Color c) { return os << to_string(c); }
+    auto operator<<(std::ostream& os, Color c) -> std::ostream& { return os << to_string(c); }
 
     // Attr Overload << for easier use
-    std::ostream& operator<<(std::ostream& os, Attr a) { return os << to_string(a); }
+    auto operator<<(std::ostream& os, Attr a) -> std::ostream& { return os << to_string(a); }
 
     const std::string wrap(const std::string& s, const Color& c, const Attr& a) {
         std::stringstream ss;
@@ -77,20 +77,20 @@ namespace termio::termio {
         return ss.str();
     }
 
-    const std::string normal() { return to_string(Attr::normal); }
-    const std::string bold() { return to_string(Attr::bold); }
-    const std::string italic() { return to_string(Attr::italic); }
-    const std::string underline() { return to_string(Attr::underline); }
+    auto normal() -> const std::string { return to_string(Attr::normal); }
+    auto bold() -> const std::string { return to_string(Attr::bold); }
+    auto italic() -> const std::string { return to_string(Attr::italic); }
+    auto underline() -> const std::string { return to_string(Attr::underline); }
 
-    const std::string black() { return to_string(Color::black); }
-    const std::string red() { return to_string(Color::red); }
-    const std::string green() { return to_string(Color::green); }
-    const std::string yellow() { return to_string(Color::yellow); }
-    const std::string blue() { return to_string(Color::blue); }
-    const std::string magenta() { return to_string(Color::magenta); }
-    const std::string cyan() { return to_string(Color::cyan); }
-    const std::string white() { return to_string(Color::white); }
-    const std::string reset() { return to_string(Color::reset); }
-    const std::string reset_nl() { return to_string(Color::reset) + "\n"; }
+    auto black() -> const std::string { return to_string(Color::black); }
+    auto red() -> const std::string { return to_string(Color::red); }
+    auto green() -> const std::string { return to_string(Color::green); }
+    auto yellow() -> const std::string { return to_string(Color::yellow); }
+    auto blue() -> const std::string { return to_string(Color::blue); }
+    auto magenta() -> const std::string { return to_string(Color::magenta); }
+    auto cyan() -> const std::string { return to_string(Color::cyan); }
+    auto white() -> const std::string { return to_string(Color::white); }
+    auto reset() -> const std::string { return to_string(Color::reset); }
+    auto reset_nl() -> const std::string { return to_string(Color::reset) + "\n"; }
 
 }  // namespace termio::termio

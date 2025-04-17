@@ -2,8 +2,6 @@
 // 2025-04-14 14:25:31 dpw
 //
 
-#include <spdlog/spdlog.h>
-
 #include <catch2/catch_all.hpp>
 #include <string>
 #include <termio/termio.hpp>
