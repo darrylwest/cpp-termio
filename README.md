@@ -17,6 +17,8 @@ find_package(termio REQUIRED)
 
 ## Examples
 
+![](images/screenshot.png)
+
 _See [examples](examples) directory._
 
 ## Color Breakdown
