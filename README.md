@@ -8,7 +8,7 @@
         |__|  |__|                                                              
 ```
 
-A library to support terminal colors, attiributes, cusor positions, etc.
+A library to support terminal colors, attiributes, cursor positions, screen sizes, etc.
 
 
 ## CMake Example
