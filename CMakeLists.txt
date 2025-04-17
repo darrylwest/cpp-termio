@@ -60,3 +60,7 @@ target_link_libraries(termio_tests PRIVATE
 # Enable testing
 enable_testing()
 add_test(NAME unit_tests COMMAND termio_tests)
+
+# Add simple-colors example executable
+add_executable(simple-colors examples/simple-colors.cpp)
+target_link_libraries(simple-colors PRIVATE termio)
