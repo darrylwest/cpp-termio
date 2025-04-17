@@ -13,25 +13,24 @@ namespace termio::termio {
     std::string to_string(Color c, bool bright) {
         switch (c) {
             case Color::black:
-                return bright ? "\033[30m" : "\033[1;31m";
+                return bright ? "\033[1;30m" : "\033[0;30m";
             case Color::red:
-                return bright ? "\033[31m" : "\033[1;31m";
+                return bright ? "\033[1;31m" : "\033[0;31m";
             case Color::green:
-                return bright ? "\033[32m" : "\033[1;32m";
+                return bright ? "\033[1;32m" : "\033[0;32m";
             case Color::yellow:
-                return bright ? "\033[33m" : "\033[1;33m";
+                return bright ? "\033[1;33m" : "\033[0;33m";
             case Color::blue:
-                return bright ? "\033[34m" : "\033[1;34m";
+                return bright ? "\033[1;34m" : "\033[0;34m";
             case Color::magenta:
-                return bright ? "\033[35m" : "\033[1;35m";
+                return bright ? "\033[1;35m" : "\033[0;35m";
             case Color::cyan:
-                return bright ? "\033[36m" : "\033[1;36m";
+                return bright ? "\033[1;36m" : "\033[0;36m";
             case Color::white:
-                return bright ? "\033[37m" : "\033[1;37m";
-            case Color::reset:
+                return bright ? "\033[1;37m" : "\033[0;37m";
+            default:;
+                // default to reset
                 return "\033[0m";
-            default:
-                return "\033[0m";  // Reset to default
         }
     }
 
@@ -57,10 +56,9 @@ namespace termio::termio {
                 return "\033[8m";
             case Attr::strikethrough:
                 return "\033[9m";
-                // case Attr::bright:
-                // return ";1";  // Used in conjunction with color.
         }
 
+        // default to reset attr
         return "\033[0m";
     }
 
@@ -73,7 +71,7 @@ namespace termio::termio {
     const std::string wrap(const std::string& s, const Color& c, const Attr& a) {
         std::stringstream ss;
 
-        ss << a << c << s << Color::reset;
+        ss << c << a << s << Color::reset;
         return ss.str();
     }
 
@@ -81,6 +79,7 @@ namespace termio::termio {
     auto bold() -> const std::string { return to_string(Attr::bold); }
     auto italic() -> const std::string { return to_string(Attr::italic); }
     auto underline() -> const std::string { return to_string(Attr::underline); }
+    auto blink() -> const std::string { return to_string(Attr::blink); }
 
     auto black(bool bright) -> const std::string { return to_string(Color::black, bright); }
     auto red(bool bright) -> const std::string { return to_string(Color::red, bright); }

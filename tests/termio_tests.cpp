@@ -12,8 +12,8 @@ TEST_CASE("Termio tests", "[wrap]") {
     const auto text = wrap("This is blue text.", Color::blue, Attr::bold);
 
     REQUIRE(text.contains("This is blue text."));
-    REQUIRE(text.starts_with(to_string(Attr::bold)));
-    REQUIRE(text.contains(to_string(Color::blue)));
+    REQUIRE(text.contains(to_string(Attr::bold)));
+    REQUIRE(text.starts_with(to_string(Color::blue)));
     REQUIRE(text.ends_with(to_string(Color::reset)));
 }
 
@@ -23,8 +23,8 @@ TEST_CASE("Termio tests", "[wrap][default-attr]") {
     const auto text = wrap("This is yellow text.", Color::yellow);
 
     REQUIRE(text.contains("This is yellow text."));
-    REQUIRE(text.starts_with(to_string(Attr::normal)));
-    REQUIRE(text.contains(to_string(Color::yellow)));
+    REQUIRE(text.contains(to_string(Attr::normal)));
+    REQUIRE(text.starts_with(to_string(Color::yellow)));
     REQUIRE(text.ends_with(to_string(Color::reset)));
 }
 
@@ -35,8 +35,8 @@ TEST_CASE("Termio tests", "[attrs][bold]") {
     oss << bold() << "some text" << reset_nl();
     auto text = oss.str();
 
-    REQUIRE(text.starts_with(to_string(Attr::bold)));
     REQUIRE(text.contains("some text"));
+    REQUIRE(text.starts_with(to_string(Attr::bold)));
     REQUIRE(text.ends_with(to_string(Color::reset) + "\n"));
 }
 
