@@ -64,3 +64,25 @@ add_test(NAME unit_tests COMMAND termio_tests)
 # Add simple-colors example executable
 add_executable(simple-colors examples/simple-colors.cpp)
 target_link_libraries(simple-colors PRIVATE termio)
+
+# Installation rules
+
+install(DIRECTORY include/ DESTINATION include)
+install(TARGETS termio
+        EXPORT termioTargets
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+        RUNTIME DESTINATION bin
+)
+
+# Export the library for other CMake projects
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(
+        "${CMAKE_CURRENT_BINARY_DIR}/termioConfigVersion.cmake"
+        VERSION ${PROJECT_VERSION}
+        COMPATIBILITY AnyNewerVersion
+)
+install(FILES
+        "${CMAKE_CURRENT_BINARY_DIR}/termioConfigVersion.cmake"
+        DESTINATION lib/cmake/termio
+)
