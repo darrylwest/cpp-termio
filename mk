@@ -6,7 +6,7 @@
 
 set -eu
 
-export project=datetimelib
+export project=termio
 
 # parse the cli
 while [[ $# -gt 0 ]]

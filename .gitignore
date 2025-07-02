@@ -8,3 +8,5 @@ logs/*.log
 Testing
 /.idea
 /cmake-build-*
+artifacts/*.tgz
+artifacts/*.tar.gz
