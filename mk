@@ -12,6 +12,12 @@ export project=termio
 while [[ $# -gt 0 ]]
 do
     case $1 in
+        all)
+            ./mk pull 
+            ./mk clobber init test demo
+
+            exit 0
+        ;;
         init)
             /bin/rm -fr build/
             # [ -d dep-cache ] || mkdir dep-cache
@@ -39,7 +45,7 @@ do
 
             shift
         ;;
-        examples)
+        demo|examples)
             ./build/simple-colors
 
             shift

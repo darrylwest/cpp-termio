@@ -13,7 +13,13 @@ A library to support terminal colors, attributes, cursor positions, screen sizes
 
 ## CMake Example
 
-find_package(termio REQUIRED)
+CPMAddPackage(
+        NAME termio
+        GITHUB_REPOSITORY darrylwest/cpp-termio
+        GIT_TAG main
+)
+
+message(STATUS "cpp-termio library loaded")
 
 ## Examples
 
@@ -69,4 +75,7 @@ _See [examples](examples) directory._
 
 _see [this](https://gemini.google.com/share/6b4aa67b2cb4)._
 
-###### 2025.04.17 | dpw
+###### 2025.07.03 | dpw
+
+<!-- txkey for last update -->
+<p id="tx-key" style="font-size: 5px;">81N2K3mZVAPb</p>
